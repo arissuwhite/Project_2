@@ -362,6 +362,9 @@ void stay() {
         if (dealer_total > 21) {
             printf("\nDealer's score is more than 21: %d. You have won!\n", dealer_total);
         }
+        if (player_total == dealer_total) {
+            printf("\nDealer's hand is equal to yours. You have lost.\n", dealer_total);
+        }
     }
     else {
         stay();
@@ -433,7 +436,9 @@ void play(deck* stk) {
     scanf(" %c", &retrychoice);
     if (retrychoice == 'Y') {
         system("cls");
-        shuffle(&stk);
+        randomfill(&stk);
+        player_total = 0;
+        dealer_total = 0;
         play(&stk);
     }
     else if (retrychoice == 'N') {
@@ -484,14 +489,14 @@ int main() {
                 printf("\nIncorrect choice. Please enter S to play a game\n");
             }
         case 3:
-            printf("\nHave an almost perfect day!\n\n");
+            printf("\nHave a perfect day!\n\n");
             system("pause");
             exit(0);
             break;
         }
     }
     else if (choice1 == 'N') {
-        printf("\nHave an almost perfect day!\n\n");
+        printf("\nHave a perfect day!\n\n");
         system("pause");
         exit(0);
     }
